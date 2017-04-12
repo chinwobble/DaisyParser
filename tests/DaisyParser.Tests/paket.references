@@ -1,0 +1,5 @@
+FSharp.Core
+FParsec
+group Test
+NUnit
+NUnit.Runners
