@@ -1,5 +1,6 @@
 FSharp.Core
 FParsec
+FSharp.Data
 group Test
 NUnit
 NUnit.Runners

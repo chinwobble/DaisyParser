@@ -14,9 +14,8 @@ module Common =
     between
       (pstring "<!--")
       (pstring "-->")
-      (attempt (ign "<!--" >>. nestedCommentParser >>. ign "-->") <|> 
-      ign "-->") <| o
-
+      (attempt (ign "<!--" >>. nestedCommentParser >>. ign "-->") <|> ign "-->") <| o
+  
 
   let BetweenTags str = 
     let startTag tagName =
