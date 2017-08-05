@@ -5,10 +5,13 @@ open FSharp.Data
 
 module HeadTests =
   [<Test>]
-  let ``Test Head Deserialisation`` () =
+  let ``Test smoke test`` () =
     Assert.AreEqual(42,43)
 
 module FSharpDataTests = 
+  open DaisyParser.Parser.Domain
+  open System
+
   [<Test>]
   let ``Can Parse Head`` () = 
     let testDoc =
@@ -53,12 +56,43 @@ module FSharpDataTests =
           <meta name="ncc:files" content="97" />
           <meta name="prod:recLocation" content="Studio 2" />
           <meta name="prod:recEngineer" content="J Klein" />
+          <bad name="prod:recEngineer" content="J Klein" />
         </head>"""
-    let htmlDoc = HtmlDocument.Parse(testDoc)
-    htmlDoc.Descendants "head"
-    |> Seq.map (fun x -> HtmlNode.descendants true (fun y -> HtmlAttribute.value("name") = "dc:title"))
 
-    let result = htmlDoc.CssSelect "head"
-    ()
+    let htmlDoc = HtmlDocument.Parse(testDoc)
+    let headChildren = 
+      htmlDoc.Descendants "head" 
+      |> Seq.head
+      |> HtmlNode.elementsNamed ["title" ; "meta"]
+    let title = 
+      headChildren
+      |> Seq.find (fun x -> x.HasName "title")
+      |> HtmlNodeExtensions.DirectInnerText
+    
+    let metadata = 
+      headChildren
+      |> Seq.filter (HtmlNode.hasName "meta")
+      |> Seq.map (fun x -> 
+        (HtmlNode.attributeValue "name" x, HtmlNode.attributeValue "content" x))
+      
+    let getValueFromTuple key =
+      metadata
+      |> Seq.find (fun (key,value) -> key = key)
+      |> snd
+
+    { MetaData.Creator = getValueFromTuple "dc:creator" 
+      Date = DateTime.Now
+      Format = getValueFromTuple "dc:format"
+      Publisher = getValueFromTuple "dc:publisher"
+      Title = getValueFromTuple "dc:title"
+      Charset = getValueFromTuple "ncc:charset"
+      PageFront = getValueFromTuple "ncc:pageFront" |> int
+      PageNormal = getValueFromTuple "ncc:pagenormal" |> int
+      PageSpecial = getValueFromTuple "ncc:pageSpecial" |> int
+      TocItems = getValueFromTuple "ncc:tocItems" |> int
+      TotalTime = new TimeSpan(getValueFromTuple "ncc:totaltime" |> int64)
+      OptionalMetaData = [] }
+    //()
+    
 
 

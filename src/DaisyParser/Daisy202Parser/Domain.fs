@@ -15,7 +15,7 @@ module Domain =
   | ``Full Text with some Audio``
 
   type MetaDataWithScheme<'a,'b> = {
-    Content : 'a 
+    Content : 'a
     Scheme : 'b
   }
 
@@ -56,8 +56,8 @@ module Domain =
     Creator : string // dc:creator
     Date : DateTime //dc:date
     Format : string // dc:format should be Daisy 2.02
-    Identifier : MetaDataWithScheme<string, string option> //dc:identifier
-    Language : MetaDataWithScheme<string, string option> //schemes: ISO 639 language code optionally followed by a two letter country code as in ISO 3166. For Sweden: "SV" or "SV-SE", for the United Kingdom: "EN" or "EN-UK" etc.
+    //Identifier : MetaDataWithScheme<string, string option> //dc:identifier
+    //Language : MetaDataWithScheme<string, string option> //schemes: ISO 639 language code optionally followed by a two letter country code as in ISO 3166. For Sweden: "SV" or "SV-SE", for the United Kingdom: "EN" or "EN-UK" etc.
     Publisher : string //dc:publisher
     Title : string //dc:title
     Charset : string // ncc:charset
@@ -67,12 +67,11 @@ module Domain =
     TocItems : int // ncc:tocItems or ncc:tocitems or ncc:TOCitems
     TotalTime : TimeSpan // ncc:totalTime
 
-    OptionalMetaData : OptionalMetaData list
+    OptionalMetaData : OptionalMetaData seq
     
   }
 
   type NavigationControlCentre = {
-    Title : string ; 
-    Meta : MetaData ; 
-  }
+    Title : string
+    Meta : MetaData }
     
