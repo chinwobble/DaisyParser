@@ -75,12 +75,12 @@ module FSharpDataTests =
       |> Seq.map (fun x -> 
         (HtmlNode.attributeValue "name" x, HtmlNode.attributeValue "content" x))
       
-    let getValueFromTuple key =
+    let getValueFromTuple (key: string) =
       metadata
-      |> Seq.find (fun (key,value) -> key = key)
+      |> Seq.find (fun (k,v) -> k.ToLower() = key.ToLower())
       |> snd
 
-    { MetaData.Creator = getValueFromTuple "dc:creator" 
+    { MetaData.Creator = getValueFromTuple "dc:creator"
       Date = DateTime.Now
       Format = getValueFromTuple "dc:format"
       Publisher = getValueFromTuple "dc:publisher"
