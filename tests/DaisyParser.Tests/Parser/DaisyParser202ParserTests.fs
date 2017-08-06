@@ -77,7 +77,7 @@ module FSharpDataTests =
       
     let getValueFromTuple (key: string) =
       metadata
-      |> Seq.find (fun (k,v) -> k.ToLower() = key.ToLower())
+      |> Seq.find (fun (k, _) -> k.ToLower() = key.ToLower())
       |> snd
 
     { MetaData.Creator = getValueFromTuple "dc:creator"
@@ -90,7 +90,7 @@ module FSharpDataTests =
       PageNormal = getValueFromTuple "ncc:pagenormal" |> int
       PageSpecial = getValueFromTuple "ncc:pageSpecial" |> int
       TocItems = getValueFromTuple "ncc:tocItems" |> int
-      TotalTime = new TimeSpan(getValueFromTuple "ncc:totaltime" |> int64)
+      TotalTime = TimeSpan(getValueFromTuple "ncc:totaltime" |> int64)
       OptionalMetaData = [] }
     //()
     
