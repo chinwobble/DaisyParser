@@ -57,7 +57,9 @@ module HeadParsersTests =
     let daisyMetadata = 
       HtmlDocument.Parse(testDoc)
       |> createRecord
-
+    Assert.AreEqual("Economics", daisyMetadata.Title)
+    Assert.AreEqual(5487, daisyMetadata.TotalTime)
+    Assert.AreEqual("Richard G. Lipsey", daisyMetadata.Creator)
     ()
     
 

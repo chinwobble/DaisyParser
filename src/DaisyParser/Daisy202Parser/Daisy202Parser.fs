@@ -51,7 +51,7 @@ module HeadParser =
               else scheme)
           |> DurationPattern.CreateWithCurrentCulture
         let parserResult = totalTimeParser.Parse(value)
-        parserResult.Value.Hours + (parserResult.Value.Minutes * 60)
+        parserResult.Value.TotalMinutes |> int
 
       { DaisyMetadata.Creator = getValueFromNode "dc:creator"
         Date = DateTime.Now
