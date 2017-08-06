@@ -14,7 +14,9 @@ module Domain =
   | ``Full Text And no Audio`` 
   | ``Full Text with some Audio``
 
-  type MetaDataWithScheme<'a,'b> = {
+  
+
+  type MetadataWithScheme<'a,'b> = {
     Content : 'a
     Scheme : 'b
   }
@@ -25,9 +27,9 @@ module Domain =
   | Description // dc:description
   | Relation //dc:relation reference to a related resource
   | Rights // dc:rights
-  | Source of MetaDataWithScheme<string, string option> // dc:source
-  | Subject of MetaDataWithScheme<string, string option> // dc:subject
-  | Type of MetaDataWithScheme<string, string option> // dc:type 
+  | Source of MetadataWithScheme<string, string option> // dc:source
+  | Subject of MetadataWithScheme<string, string option> // dc:subject
+  | Type of MetadataWithScheme<string, string option> // dc:type 
   | Depth of int // ncc:depth
   | Files of int // ncc:files
   | Footnotes of int //ncc:footnotes
@@ -37,9 +39,9 @@ module Domain =
   | MultimediaType of MultiMediaType // ncc:multimediaType one of the DAISY DTB categories listed in section 1.3 above: type 1 "audioOnly"; type 2 "audioNcc"; type 3 "audioPartText"; type 4 "audioFullText"; type 5 "textPartAudio"; type 6 "textNcc". (See also the DAISY structure guidelines)
   | Narrator of string // ncc:narrator
   | ProdNotes of int // ncc:prodNotes mandatory if producer notes are used 
-  | ProducedDate of MetaDataWithScheme<string, string option> //  ncc:producedDate  content: date of first generation of DTB
+  | ProducedDate of MetadataWithScheme<string, string option> //  ncc:producedDate  content: date of first generation of DTB
   | Revision of int  // ncc:revision content: integer describing revision number
-  | RevisionDate of MetaDataWithScheme<string, string option> //ncc:revisionDate
+  | RevisionDate of MetadataWithScheme<string, string option> //ncc:revisionDate
   | SetInfo of int //ncc:setInfo
 //content: k of n ; for the kth medium of a DTB spanned on n distribution media
 //occurrence: mandatory in multiple volume DTB´s; inclusion in single volume DTB´s is optional - recommended
@@ -52,7 +54,7 @@ module Domain =
   | SourceTitle of string 
   | HttpEquiv of string // http-equiv
 
-  type MetaData = {
+  type DaisyMetadata = {
     Creator : string // dc:creator
     Date : DateTime //dc:date
     Format : string // dc:format should be Daisy 2.02
@@ -65,7 +67,7 @@ module Domain =
     PageNormal : int // ncc:pageNormal or ncc:page-normal total number of normal pages
     PageSpecial : int // ncc:prodNotes
     TocItems : int // ncc:tocItems or ncc:tocitems or ncc:TOCitems
-    TotalTime : TimeSpan // ncc:totalTime
+    TotalTime : int // ncc:totalTime time in minutes
 
     OptionalMetaData : OptionalMetaData seq
     
@@ -73,5 +75,5 @@ module Domain =
 
   type NavigationControlCentre = {
     Title : string
-    Meta : MetaData }
+    Meta : DaisyMetadata }
     

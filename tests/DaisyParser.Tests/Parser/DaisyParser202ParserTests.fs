@@ -3,13 +3,9 @@ namespace DaisyParser.Tests.Parser
 open NUnit.Framework
 open FSharp.Data
 
-module HeadTests =
-  [<Test>]
-  let ``Test smoke test`` () =
-    Assert.AreEqual(42,43)
 
-module FSharpDataTests = 
-  open DaisyParser.Parser.Domain
+module HeadParsersTests = 
+  open DaisyParser.Daisy202Parser.HeadParser
   open System
 
   [<Test>]
@@ -58,41 +54,11 @@ module FSharpDataTests =
           <meta name="prod:recEngineer" content="J Klein" />
           <bad name="prod:recEngineer" content="J Klein" />
         </head>"""
+    let daisyMetadata = 
+      HtmlDocument.Parse(testDoc)
+      |> createRecord
 
-    let htmlDoc = HtmlDocument.Parse(testDoc)
-    let headChildren = 
-      htmlDoc.Descendants "head" 
-      |> Seq.head
-      |> HtmlNode.elementsNamed ["title" ; "meta"]
-    let title = 
-      headChildren
-      |> Seq.find (fun x -> x.HasName "title")
-      |> HtmlNodeExtensions.DirectInnerText
-    
-    let metadata = 
-      headChildren
-      |> Seq.filter (HtmlNode.hasName "meta")
-      |> Seq.map (fun x -> 
-        (HtmlNode.attributeValue "name" x, HtmlNode.attributeValue "content" x))
-      
-    let getValueFromTuple (key: string) =
-      metadata
-      |> Seq.find (fun (k, _) -> k.ToLower() = key.ToLower())
-      |> snd
-
-    { MetaData.Creator = getValueFromTuple "dc:creator"
-      Date = DateTime.Now
-      Format = getValueFromTuple "dc:format"
-      Publisher = getValueFromTuple "dc:publisher"
-      Title = getValueFromTuple "dc:title"
-      Charset = getValueFromTuple "ncc:charset"
-      PageFront = getValueFromTuple "ncc:pageFront" |> int
-      PageNormal = getValueFromTuple "ncc:pagenormal" |> int
-      PageSpecial = getValueFromTuple "ncc:pageSpecial" |> int
-      TocItems = getValueFromTuple "ncc:tocItems" |> int
-      TotalTime = TimeSpan(getValueFromTuple "ncc:totaltime" |> int64)
-      OptionalMetaData = [] }
-    //()
+    ()
     
 
 

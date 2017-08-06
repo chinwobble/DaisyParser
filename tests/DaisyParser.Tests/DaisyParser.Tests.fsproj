@@ -44,11 +44,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Tests.fs" />
     <None Include="paket.references" />
     <Content Include="App.config" />
     <Compile Include="Parser/DaisyParser202ParserTests.fs" />
-    <Compile Include="Parser/CommonTests.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Choose>

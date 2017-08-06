@@ -1,4 +1,4 @@
-namespace DaisyParser.Parser.Common
+namespace DaisyParser.Daisy202Parser
 
 open FParsec
 
