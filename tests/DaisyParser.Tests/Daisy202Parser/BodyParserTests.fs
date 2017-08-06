@@ -2,10 +2,7 @@
 
 module BodyParserTests = 
   open DaisyParser.Daisy202Parser.BodyParser
-  open DaisyParser.Daisy202Parser.Domain
-  
   open FSharp.Data
-  open System
   open NUnit.Framework
 
   [<Test>]
@@ -37,43 +34,9 @@ module BodyParserTests =
         <h1 id="econ_0946"><a href="econ0088.smil#ec880001">Ending announcement</a></h1>
       </body>
       """
-    let mapToBodyElement (node: HtmlNode) : BodyElement option = 
-      //["h1"; "h2"; "h3"; "h4"; "h5"; "h6"]
-      let hreference (nodeWithAnchor:HtmlNode) = 
-        let anchor = nodeWithAnchor.Elements("a") |> Seq.head
-        let href = anchor.AttributeValue("href")
-        { Text = anchor.DirectInnerText() // will throw exception on malformed body
-          File = href.Split('#').[0]
-          Fragment = href.Split('#').[1] }
-      match node.Name().ToLower() with
-      | "h1" -> 
-        { Heading.Id = node.AttributeValue "id"
-          Anchor = hreference node }
-        |> BodyElement.H1
-        |> Some
-
-      | "span" -> 
-        let decodeSpanClass = function 
-          | "page-front" -> SpanClass.PageFront |> Some
-          | "page-normal" -> SpanClass.PageNormal |> Some
-          | "page-special" -> SpanClass.PageSpecial |> Some
-          | _ -> None
-        { Span.Id = node.AttributeValue "id" 
-          Class = decodeSpanClass <| node.AttributeValue("class").ToLower()
-          Anchor = hreference node }
-        |> BodyElement.Span
-        |> Some
-      | _ -> None
-      //| "span" -> 
-      //| "div" -> 
-      //| _ -> ""
-        
-
     let h1Element = 
       HtmlDocument.Parse(testBody)
-      |> HtmlDocumentExtensions.Body
-      |> HtmlNodeExtensions.Descendants
-      |> Seq.map mapToBodyElement
-      |> Seq.choose id
+      |> toBodyElements
     
+    Assert.AreEqual(12, Seq.length h1Element)
     ()

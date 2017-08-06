@@ -5,6 +5,7 @@ open System
 // http://www.daisy.org/z3986/specifications/daisy_202.html?q=publications/specifications/daisy_202.html#textdoc
 module Domain =
   open System.Security.Cryptography
+  open NodaTime
 
   type MultiMediaType = 
   | ``Full Audio With Title Only`` // no navigation 
@@ -133,4 +134,48 @@ module Domain =
     | H6 of Heading //optional
     | Span of Span
     | Div
-    
+  
+  type SmilMetaData = {
+    TotalElapsed: int option 
+    TimeInThisSmil: int option }
+  
+  type SmilLayout = {
+    Region: string }
+
+  //exactly one seq
+  type SmilTextReference = {
+    Id: string
+    File: string 
+    Fragment: string }
+
+  type SmilAudioReference = {
+    File: string 
+    ClipStart: Duration option
+    ClipEnd: Duration option
+    Id: string }
+
+  // The <par> element is a time container whose children do not form a temporal sequence; 
+  // as opposed to the <seq> element they instead occur simultaneously. 
+  // In other words, media objects within a <par> element are synchronized with each other.
+  
+  type SmilPar = {
+    Id: string
+    Text: SmilTextReference
+    Children: SmilParChildren }
+
+  and SmilParChildren = 
+    Audio of SmilAudioReference
+    | Seqs of SmilNestedSeq
+
+  // The <seq> element is a time container whose children form a temporal sequence. 
+  // In the following definition lists, the <seq> element that occurs as a child of <body>
+  // is referred to as the "main" <seq>, 
+  // and <seq> elements that are nested are referred to as "nested".
+  and SmilNestedSeq = 
+    Audio of SmilAudioReference seq
+    | Par of SmilPar * SmilPar 
+  
+  type SmilBody = {
+    Duration: Duration // 
+    Par: SmilPar seq
+    Seq: (SmilNestedSeq seq) Option } // used for note reference
