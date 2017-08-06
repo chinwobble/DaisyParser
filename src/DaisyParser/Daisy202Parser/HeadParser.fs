@@ -1,48 +1,39 @@
 namespace DaisyParser.Daisy202Parser
 
 module HeadParser =
-    open DaisyParser.Parser.Domain
+
+    open DaisyParser.Daisy202Parser.Domain
     open FSharp.Data
     open System
     open NodaTime.Text
-
-    let private headChildren (document:HtmlDocument) = 
+    
+    let private metaTuples (document: HtmlDocument) = 
       document.Descendants "head"
       |> Seq.head
       |> HtmlNode.elementsNamed ["title" ; "meta"]
-    
-    let private getTitle (headNodes: HtmlNode list) =
-      headNodes
-      |> Seq.find (fun x -> x.HasName "title")
-      |> HtmlNodeExtensions.DirectInnerText
-    
-    let private getMetaTags (headChildren: HtmlNode list) = 
-      headChildren
       |> Seq.filter (HtmlNode.hasName "meta")
       |> Seq.map (fun x -> 
-        (HtmlNode.attributeValue "name" x
+        ( HtmlNode.attributeValue "name" x
         , HtmlNode.attributeValue "content" x
-        , HtmlNode.attributeValue "scheme" x))
+        , HtmlNode.attributeValue "scheme" x ))
     
     let private findByKey (key: string) (kvps: (string*string*string) seq): (string*string) =
         let (_, v, s) = 
           kvps
           |> Seq.find (fun (k, _, _) -> k.ToLower() = key.ToLower())
         (v, s)
-
-    let private getMetaValues (document:HtmlDocument) =     
-      headChildren document
-      |> getMetaTags
-    
+            
     let createRecord (document:HtmlDocument)  = 
       let getValueFromNode (key: string) = 
-        getMetaValues document
+        metaTuples document
         |> findByKey key
         |> fst
+
       let parseTotal = 
         let (value, scheme) =
-          getMetaValues document
+          metaTuples document
           |> findByKey "ncc:totaltime"
+
         let totalTimeParser = 
           scheme
           |> (fun scheme -> 
@@ -50,6 +41,7 @@ module HeadParser =
               then "H:mm:ss"
               else scheme)
           |> DurationPattern.CreateWithCurrentCulture
+
         let parserResult = totalTimeParser.Parse(value)
         parserResult.Value.TotalMinutes |> int
 

@@ -48,7 +48,8 @@
     <Content Include="App.config" />
     <Compile Include="Daisy202Parser\Domain.fs" />
     <Compile Include="Daisy202Parser/Common.fs" />
-    <Compile Include="Daisy202Parser/Daisy202Parser.fs" />
+    <Compile Include="Daisy202Parser\HeadParser.fs" />
+    <Compile Include="Daisy202Parser\BodyParser.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Choose>

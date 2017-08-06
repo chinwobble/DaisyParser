@@ -1,9 +1,10 @@
-﻿namespace DaisyParser.Parser
+﻿namespace DaisyParser.Daisy202Parser
 
 open System
 // model based on 2.02 standard 
 // http://www.daisy.org/z3986/specifications/daisy_202.html?q=publications/specifications/daisy_202.html#textdoc
 module Domain =
+  open System.Security.Cryptography
 
   type MultiMediaType = 
   | ``Full Audio With Title Only`` // no navigation 
@@ -69,11 +70,67 @@ module Domain =
     TocItems : int // ncc:tocItems or ncc:tocitems or ncc:TOCitems
     TotalTime : int // ncc:totalTime time in minutes
 
-    OptionalMetaData : OptionalMetaData seq
-    
-  }
+    OptionalMetaData : OptionalMetaData seq }
 
   type NavigationControlCentre = {
     Title : string
     Meta : DaisyMetadata }
+  
+  type HReference = {
+    Text: string
+    File: string 
+    Fragment: string }
+
+  type AllowedClasses = 
+    Title 
+    | Jacket
+    | Front
+    | TitlePage
+    | CopyrightPage
+    | Acknowledgments
+    | Prolog
+    | Introduction
+    | Dedication
+    | Foreword
+    | Preface
+    | PrintTOC
+    | Part
+    | Chapter
+    | Section
+    | Subsection
+    | MinorHead
+    | Bibliography
+    | Glossary
+    | Appendix
+    | Index
+    | IndexCategory
+
+
+  type Heading = {
+    Id: string 
+    //Class additional metadata for 
+    Anchor: HReference }
+  
+  // identifies the beginning of the page 
+  type SpanClass = 
+    PageFront // page-front
+    | PageNormal // page-normal
+    | PageSpecial // page speical
+  
+  type Span = {
+    Id: string 
+    Class: SpanClass option //additional metadata for 
+    Anchor: HReference }
+  
+  // todo add div support
+
+  type BodyElement =
+    H1 of Heading
+    | H2 of Heading //optional
+    | H3 of Heading //optional
+    | H4 of Heading //optional
+    | H5 of Heading //optional
+    | H6 of Heading //optional
+    | Span of Span
+    | Div
     

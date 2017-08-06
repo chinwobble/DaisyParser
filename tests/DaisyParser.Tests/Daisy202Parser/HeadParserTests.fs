@@ -1,12 +1,9 @@
-namespace DaisyParser.Tests.Parser
-
-open NUnit.Framework
-open FSharp.Data
-
+namespace DaisyParser.Tests.Daisy202Parser
 
 module HeadParsersTests = 
   open DaisyParser.Daisy202Parser.HeadParser
-  open System
+  open NUnit.Framework
+  open FSharp.Data
 
   [<Test>]
   let ``Can Parse Head`` () = 
