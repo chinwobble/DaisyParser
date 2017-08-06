@@ -1,6 +1,7 @@
 FSharp.Core
 FParsec
 FSharp.Data
+nodatime
 group Test
 NUnit
 NUnit.Runners
