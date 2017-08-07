@@ -3,6 +3,15 @@ namespace DaisyParser.Daisy202Parser
 open FParsec
 
 module Common =
+  open NodaTime.Text
+  open NodaTime
+
+  let parseDuration (input: string) : Duration option = 
+    let parser = DurationPattern.CreateWithCurrentCulture("S.fff")
+    if parser.Parse(input.Split('s').[0]).Success
+    then parser.Parse(input.Split('s').[0]).Value |> Some
+    else None
+
   let commentsParser<'b> : Parser<string, 'b> = 
     between
       (pstring "<!--")

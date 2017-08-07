@@ -52,52 +52,11 @@ module SmilParserTests =
           </body>
         </smil>
       """
-    
-    let rec toPar (par: HtmlNode) : (SmilPar Option) = 
-      let toSmilText (textNode: HtmlNode) : SmilTextReference = 
-        let fileReference = textNode.AttributeValue("src").Split('#')
-        { Id           = textNode.AttributeValue("value")
-          File         = fileReference.[0]
-          Fragment     = fileReference.[1] }
-      
-      let toSmilParChildren nestedSeqNodes : SmilParChildren Option = 
-        match nestedSeqNodes with 
-        | a when (Array.filter (HtmlNode.hasName "audio") a).Length = 1 ->
-          let audioNode = Seq.find (HtmlNode.hasName "audio") a
-          { File = audioNode.AttributeValue("src")
-            ClipStart = None
-            ClipEnd   = None
-            Id        = audioNode.AttributeValue("id")}
-          |> SmilParChildren.Audio
-          |> Some
-
-        | a when (Array.filter (HtmlNode.hasName "seq") a).Length = 1 ->
-          let nestedSeq = Array.find (HtmlNode.hasName "seq") a
-          None
-        | _ -> None
-      
-      match toSmilParChildren (HtmlNode.elements par |> Seq.toArray) with 
-      | Some children -> 
-        { SmilPar.Id = par.AttributeValue("id")
-          Text = toSmilText (HtmlNode.elementsNamed ["text"] par |> Seq.head)
-          Children = children } 
-        |> Some
-      | None -> None
-      
-
-    let smilBodyOuterSeq (node:HtmlNode) : SmilBody = 
-      let parser = DurationPattern.CreateWithCurrentCulture("S.fff")
-      let duration = parser.Parse(node.AttributeValue("dur").Split('s').[0])
-      
-      { SmilBody.Duration = duration.Value
-        Par = node.Elements "par" |> Seq.map toPar |> Seq.choose id 
-        Seq = None }
-      
-    let h1Element = 
+    let smilBody = 
       HtmlDocument.Parse(testBody)
       |> HtmlDocumentExtensions.Body
-      |> HtmlNode.elements
+      |> HtmlNodeExtensions.Descendants
       |> Seq.head
-      |> smilBodyOuterSeq
-
+      |> DaisyParser.Daisy202Parser.SmilParser.smilBodyOuterSeq
+    
     ()
