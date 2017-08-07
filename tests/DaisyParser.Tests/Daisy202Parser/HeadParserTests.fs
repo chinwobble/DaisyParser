@@ -1,8 +1,10 @@
 namespace DaisyParser.Tests.Daisy202Parser
 
+open NUnit.Framework
+
+[<TestFixture>]
 module HeadParsersTests = 
   open DaisyParser.Daisy202Parser.HeadParser
-  open NUnit.Framework
   open FSharp.Data
 
   [<Test>]

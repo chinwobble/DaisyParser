@@ -1,5 +1,7 @@
 ﻿namespace DaisyParser.Tests.Daisy202Parser
+open NUnit.Framework
 
+[<TestFixture>]
 module SmilParserTests = 
   open DaisyParser.Daisy202Parser.BodyParser
   open DaisyParser.Daisy202Parser.Domain
@@ -8,7 +10,7 @@ module SmilParserTests =
   open NodaTime.Text
 
   [<Test>]
-  let ``Can Parse Body`` = 
+  let ``Can Parse Body`` () = 
     let testBody = """
       <!DOCTYPE SMIL PUBLIC "-//W3C//DTD SMIL 1.0//EN" "http://www.w3.org/TR/REC-SMIL/SMIL10.dtd">
         <smil>
@@ -51,7 +53,7 @@ module SmilParserTests =
         </smil>
       """
     
-    let rec toPar (par: HtmlNode) : SmilPar = 
+    let rec toPar (par: HtmlNode) : (SmilPar Option) = 
       let toSmilText (textNode: HtmlNode) : SmilTextReference = 
         let fileReference = textNode.AttributeValue("src").Split('#')
         { Id           = textNode.AttributeValue("value")
@@ -73,17 +75,22 @@ module SmilParserTests =
           let nestedSeq = Array.find (HtmlNode.hasName "seq") a
           None
         | _ -> None
-
-      { SmilPar.Id = par.AttributeValue("id")
-        Text = toSmilText (HtmlNode.elementsNamed ["text"] par |> Seq.head)
-        Children = (toSmilParChildren (HtmlNode.elements par |> Seq.toArray)).Value } 
+      
+      match toSmilParChildren (HtmlNode.elements par |> Seq.toArray) with 
+      | Some children -> 
+        { SmilPar.Id = par.AttributeValue("id")
+          Text = toSmilText (HtmlNode.elementsNamed ["text"] par |> Seq.head)
+          Children = children } 
+        |> Some
+      | None -> None
       
 
-    let smilBodyOuterSeq (node:HtmlNode) = 
+    let smilBodyOuterSeq (node:HtmlNode) : SmilBody = 
       let parser = DurationPattern.CreateWithCurrentCulture("S.fff")
       let duration = parser.Parse(node.AttributeValue("dur").Split('s').[0])
+      
       { SmilBody.Duration = duration.Value
-        Par = (node.Elements "par") |> Seq.map toPar 
+        Par = node.Elements "par" |> Seq.map toPar |> Seq.choose id 
         Seq = None }
       
     let h1Element = 
@@ -91,5 +98,6 @@ module SmilParserTests =
       |> HtmlDocumentExtensions.Body
       |> HtmlNode.elements
       |> Seq.head
+      |> smilBodyOuterSeq
 
     ()

@@ -1,12 +1,15 @@
 ﻿namespace DaisyParser.Tests.Daisy202Parser
+open NUnit.Framework
 
+[<TestFixture>]
 module BodyParserTests = 
   open DaisyParser.Daisy202Parser.BodyParser
   open FSharp.Data
   open NUnit.Framework
+  open DaisyParser.Daisy202Parser.Domain
 
   [<Test>]
-  let ``Can Parse Body`` = 
+  let ``Can Parse Body`` () = 
     let testBody = 
       """
       <body>
@@ -34,9 +37,14 @@ module BodyParserTests =
         <h1 id="econ_0946"><a href="econ0088.smil#ec880001">Ending announcement</a></h1>
       </body>
       """
-    let h1Element = 
+    let nccBody = 
       HtmlDocument.Parse(testBody)
       |> toBodyElements
     
-    Assert.AreEqual(12, Seq.length h1Element)
+    Assert.AreEqual(19, Seq.length nccBody)
+    Assert.AreEqual( H1 { Heading.Id = "econ_0001"
+                          Anchor = { Text = "Economics by Richard G. Lipsey et al.."
+                                     File = "econ0001.smil"
+                                     Fragment = "ec1a_0001" } }
+                                 , Seq.head nccBody)
     ()
