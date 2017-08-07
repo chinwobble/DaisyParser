@@ -1,5 +1,7 @@
 ﻿namespace DaisyParser.Daisy202Parser
 
+// this module attempts to implement section 2.3 and 2.4 of the daisy202 spec
+// http://www.daisy.org/z3986/specifications/daisy_202.html?q=publications/specifications/daisy_202.html#textdoc
 module SmilParser =
   open DaisyParser.Daisy202Parser.Domain
   open FSharp.Data
