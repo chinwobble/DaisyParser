@@ -46,7 +46,7 @@ module SmilParser =
           let toRecordClip = toRecord (audioNode.AttributeValue("src")) (audioNode.AttributeValue("id"))
           let durationResult attr = 
             parseDuration (audioNode.AttributeValue(attr).Split('=').[1])
-          Option.map2 toRecordClip (durationResult "clip-begin") (durationResult "clip-begin"))
+          Option.map2 toRecordClip (durationResult "clip-begin") (durationResult "clip-end"))
         |> Seq.choose id
         |> SmilNestedSeq.Audio
         |> SmilParChildren.Seqs
