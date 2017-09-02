@@ -3,13 +3,12 @@
 
 # Daisy Parser
 
-Parse of DAISY (Digital Audio Information) implemented in F#.
+Paser for DAISY (Digital Audio Information) implemented in F#.
 
 In order to start compiling this library process run 
 
     > build.cmd // on windows    
-    $ ./build.sh  // on unix
-    
+    $ ./build.sh  // on unix    
 
 ## Requirements
 
