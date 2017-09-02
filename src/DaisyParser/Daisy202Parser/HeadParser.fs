@@ -37,8 +37,8 @@ module HeadParser =
         let totalTimeParser = 
           scheme
           |> (fun scheme -> 
-              if scheme = "hh:mm:ss"
-              then "H:mm:ss"
+              if scheme = "hh:mm:ss" then "H:mm:ss"
+              elif scheme = "" then "H:mm:ss"
               else scheme)
           |> DurationPattern.CreateWithCurrentCulture
 
