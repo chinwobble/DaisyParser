@@ -8,5 +8,5 @@ artifacts:
   - path: bin
     name: bin
   
-  - path: .
+  - path: \
     name: TestResults.xml
