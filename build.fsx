@@ -381,7 +381,7 @@ Target "All" DoNothing
   ==> "CopyBinaries"
   ==> "RunTests"
   ==> "GenerateReferenceDocs"
-  ==> "GenerateDocs"
+  //==> "GenerateDocs"
 #if MONO
 #else
   =?> ("SourceLink", Pdbstr.tryFind().IsSome )
