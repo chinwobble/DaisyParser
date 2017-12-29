@@ -41,11 +41,17 @@ module SmilParser =
           sn.Elements "audio"
           |> Seq.map toSmilAudioReference)
         |> Seq.map SmilNestedSeq.Audio
-      
+    
+    let tryGetAudioRef (nodes:HtmlNode List) = 
+      if nodes.Length = 1 
+      then Seq.last nodes 
+        |> toSmilAudioReference 
+        |> Some
+      else None 
     {
       Id = par.AttributeValue("id")
       Text = par.Elements("text") |> Seq.last |> toSmilText
-      Audio = None
+      Audio = tryGetAudioRef <| par.Elements "audio"
       Seqs = toNestedSeq (par.Elements "seq") |> Some
     } |> Some
     

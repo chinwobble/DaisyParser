@@ -62,7 +62,6 @@ module SmilParserTests =
     let unwrappedSmilBody =
       smilBody.Value.Value
     Assert.True(unwrappedSmilBody.Seq.IsNone)
-    Assert.True(unwrappedSmilBody.Seq.IsSome)
 
     let firstAudio =
       unwrappedSmilBody.Par.First().Audio
