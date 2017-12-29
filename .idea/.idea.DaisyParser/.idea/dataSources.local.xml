@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="3dss_dev@localhost" uuid="6b38ef27-ce33-44d5-8f7d-c45d028e394e">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" />
+      <secret-storage>master_key</secret-storage>
+      <domain-auth>true</domain-auth>
+      <first-sync>true</first-sync>
+    </data-source>
+  </component>
+</project>

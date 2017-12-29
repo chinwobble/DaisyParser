@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\dev\DaisyParser" t="IncludeFlat">
+      <e p=".paket" t="Include" />
+      <e p="build.fsx" t="Include" />
+      <e p="DaisyParser.sln" t="IncludeFlat" />
+      <e p="docs" t="Include">
+        <e p="content" t="Include">
+          <e p="index.fsx" t="Include" />
+          <e p="tutorial.fsx" t="Include" />
+        </e>
+        <e p="tools" t="Include">
+          <e p="generate.fsx" t="Include" />
+          <e p="templates\template.cshtml" t="Include" />
+        </e>
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="paket.dependencies" t="Include" />
+      <e p="project" t="Include" />
+      <e p="README.md" t="Include" />
+      <e p="RELEASE_NOTES.md" t="Include" />
+      <e p="src\DaisyParser" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Daisy202Parser" t="Include">
+          <e p="BodyParser.fs" t="Include" />
+          <e p="Common.fs" t="Include" />
+          <e p="Domain.fs" t="Include" />
+          <e p="HeadParser.fs" t="Include" />
+          <e p="SmilParser.fs" t="Include" />
+        </e>
+        <e p="DaisyParser.fsproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="paket.references" t="Include" />
+        <e p="paket.template" t="Include" />
+        <e p="Script.fsx" t="Include" />
+      </e>
+      <e p="tests" t="Include">
+        <e p="DaisyParser.Tests" t="IncludeRecursive">
+          <e p="App.config" t="Include" />
+          <e p="bin" t="ExcludeRecursive" />
+          <e p="Daisy202Parser" t="Include">
+            <e p="BodyParserTests.fs" t="Include" />
+            <e p="HeadParserTests.fs" t="Include" />
+            <e p="SmilParserTests.fs" t="Include" />
+          </e>
+          <e p="DaisyParser.Tests.fsproj" t="IncludeRecursive" />
+          <e p="obj" t="ExcludeRecursive" />
+          <e p="paket.references" t="Include" />
+        </e>
+      </e>
+    </e>
+    <e p="C:\Users\benne\.Rider2017.2\system\resharper-host\local\Transient\ReSharperHost\v10\SolutionCaches\_DaisyParser.622441332.00" t="ExcludeRecursive" />
+  </component>
+</project>

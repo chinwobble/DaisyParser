@@ -161,11 +161,8 @@ module Domain =
   type SmilPar = {
     Id: string
     Text: SmilTextReference
-    Children: SmilParChildren }
-
-  and SmilParChildren = 
-    Audio of SmilAudioReference
-    | Seqs of SmilNestedSeq
+    Audio: SmilAudioReference Option
+    Seqs: SmilNestedSeq seq Option }
 
   // The <seq> element is a time container whose children form a temporal sequence. 
   // In the following definition lists, the <seq> element that occurs as a child of <body>
@@ -173,7 +170,7 @@ module Domain =
   // and <seq> elements that are nested are referred to as "nested".
   and SmilNestedSeq = 
     Audio of SmilAudioReference seq
-    | Par of SmilPar * SmilPar 
+    | Par of SmilPar * SmilPar  // used for notes 
   
   type SmilBody = {
     Duration: Duration // 

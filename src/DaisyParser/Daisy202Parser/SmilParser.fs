@@ -14,57 +14,48 @@ module SmilParser =
     |> HtmlDocumentExtensions.Body
     |> HtmlNodeExtensions.Descendants
 
-  let rec toPar (par: HtmlNode) : (SmilPar Option) = 
+  let toPar (par: HtmlNode) : (SmilPar Option) = 
+    let (|TextRef|SequenceRef|Audio|) (node: HtmlNode) =
+      if node.HasName "audio"  then Audio 
+      elif node.HasName "seq"  then SequenceRef 
+      elif node.HasName "text" then TextRef
+      else invalidArg "" ""
+
     let toSmilText (textNode: HtmlNode) : SmilTextReference = 
       let fileReference = textNode.AttributeValue("src").Split('#')
       { Id           = textNode.AttributeValue("value")
         File         = fileReference.[0]
         Fragment     = fileReference.[1] }
       
-    let toSmilParChildren nestedSeqNodes : SmilParChildren Option = 
-      match nestedSeqNodes with 
-      | a when (Array.filter (HtmlNode.hasName "audio") a).Length = 1 ->
-        let audioNode = Seq.find (HtmlNode.hasName "audio") a
-        { File = audioNode.AttributeValue("src")
-          ClipStart = None
-          ClipEnd   = None
-          Id        = audioNode.AttributeValue("id")}
-        |> SmilParChildren.Audio
-        |> Some
-
-      | a when (Array.filter (HtmlNode.hasName "seq") a).Length = 1 ->
-        let toRecord file id clipStart clipEnd = 
-          { File      = file
-            ClipStart = Some clipStart
-            ClipEnd   = Some clipEnd
-            Id        = id }
-        a 
-        |> Array.find (HtmlNode.hasName "seq")
-        |> HtmlNodeExtensions.Elements 
-        |> Seq.filter (HtmlNode.hasName "audio")
-        |> Seq.map (fun audioNode -> 
-          let toRecordClip = toRecord (audioNode.AttributeValue("src")) (audioNode.AttributeValue("id"))
-          let durationResult attr = 
-            parseDuration (audioNode.AttributeValue(attr).Split('=').[1])
-          Option.map2 toRecordClip (durationResult "clip-begin") (durationResult "clip-end"))
-        |> Seq.choose id
-        |> SmilNestedSeq.Audio
-        |> SmilParChildren.Seqs
-        |> Some
-      | _ -> None
+    let toSmilAudioReference (audioNode: HtmlNode) : SmilAudioReference =
+      { Id          = audioNode.AttributeValue("id")
+        File        = audioNode.AttributeValue("src")
+        ClipEnd     = None // todo fix 
+        ClipStart   = None } // todo fix
+    
+    // todo handle seq with par (used for notes)
+    let toNestedSeq (seqNodes: HtmlNode List) =
+        seqNodes
+        |> Seq.filter ((fun x -> x.Elements "audio") >> Seq.isEmpty >> not)
+        |> Seq.map (fun sn -> 
+          sn.Elements "audio"
+          |> Seq.map toSmilAudioReference)
+        |> Seq.map SmilNestedSeq.Audio
       
-    match toSmilParChildren (HtmlNode.elements par |> Seq.toArray) with 
-    | Some children -> 
-      Some { SmilPar.Id = par.AttributeValue("id")
-             Text = toSmilText (HtmlNode.elementsNamed ["text"] par |> Seq.head)
-             Children = children } 
-    | None -> None
+    {
+      Id = par.AttributeValue("id")
+      Text = par.Elements("text") |> Seq.last |> toSmilText
+      Audio = None
+      Seqs = toNestedSeq (par.Elements "seq") |> Some
+    } |> Some
+    
       
 
   let smilBodyOuterSeq (node:HtmlNode) = 
-    match parseDuration (node.AttributeValue("dur")) with 
-    | Some dur ->   
+    parseDuration (node.AttributeValue("dur"))
+    |> Option.map (fun dur ->
       Some { SmilBody.Duration = dur
-             Par = node.Elements "par" |> Seq.map toPar |> Seq.choose id 
-             Seq = None }
-    | _ -> None
+             Par = node.Elements "par" 
+                    |> Seq.map toPar 
+                    |> Seq.choose id 
+             Seq = None })

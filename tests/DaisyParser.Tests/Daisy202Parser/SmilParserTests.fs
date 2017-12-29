@@ -8,6 +8,7 @@ module SmilParserTests =
   open FSharp.Data
   open NUnit.Framework
   open NodaTime.Text
+  open System.Linq
 
   [<Test>]
   let ``Can Parse Body`` () = 
@@ -30,7 +31,7 @@ module SmilParserTests =
             <seq dur="158.485s">
               <par endsync="last" id="ec79_0002">
                 <text src="ncc.html#econ_0346" id="ec79_0003" />
-                <audio src="econ25000c.mp3 id="ec79_0004" />
+                <audio src="econ25000c.mp3" id="ec79_0004" />
               </par>
               <par endsync="last" id="ec79_0005">
                 <text src="ncc.html#econ_0348" id="ec79_0006" />
@@ -58,5 +59,22 @@ module SmilParserTests =
       |> HtmlNodeExtensions.Descendants
       |> Seq.head
       |> DaisyParser.Daisy202Parser.SmilParser.smilBodyOuterSeq
-    
+    let unwrappedSmilBody =
+      smilBody.Value.Value
+    Assert.True(unwrappedSmilBody.Seq.IsNone)
+    Assert.True(unwrappedSmilBody.Seq.IsSome)
+
+    let firstAudio =
+      unwrappedSmilBody.Par.First().Audio
+      
+    Assert.AreEqual("econ25000c.mp3", firstAudio.Value.File)
+
+    let secondAudio =
+      unwrappedSmilBody.Par.Last().Seqs.Value.First()
+
+    match secondAudio with 
+    | SmilNestedSeq.Audio audioRefs ->
+      audioRefs
+      |> Seq.iter (fun x -> Assert.AreEqual("econ25000d.mp3", x.File))
+    | _ -> invalidArg "" "should be audio"
     ()

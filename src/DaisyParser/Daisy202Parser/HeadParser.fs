@@ -16,7 +16,9 @@ module HeadParser =
         ( HtmlNode.attributeValue "name" x
         , HtmlNode.attributeValue "content" x
         , HtmlNode.attributeValue "scheme" x ))
-    
+    let findBykey a b =
+      ()
+      
     let private findByKey (key: string) (kvps: (string*string*string) seq): (string*string) =
         let (_, v, s) = 
           kvps
