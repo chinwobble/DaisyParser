@@ -48,11 +48,14 @@ module SmilParser =
         |> toSmilAudioReference 
         |> Some
       else None 
+    
     {
       Id = par.AttributeValue("id")
       Text = par.Elements("text") |> Seq.last |> toSmilText
       Audio = tryGetAudioRef <| par.Elements "audio"
-      Seqs = toNestedSeq (par.Elements "seq") |> Some
+      Seqs =  if (par.Elements "seq").Length > 0 
+              then toNestedSeq (par.Elements "seq") |> Some
+              else None
     } |> Some
     
       
