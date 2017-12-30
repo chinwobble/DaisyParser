@@ -23,7 +23,7 @@ module SmilParser =
 
     let toSmilText (textNode: HtmlNode) : SmilTextReference = 
       let fileReference = textNode.AttributeValue("src").Split('#')
-      { Id           = textNode.AttributeValue("value")
+      { Id           = textNode.AttributeValue("id")
         File         = fileReference.[0]
         Fragment     = fileReference.[1] }
       
