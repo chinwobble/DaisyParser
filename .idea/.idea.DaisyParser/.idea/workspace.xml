@@ -4,6 +4,7 @@
     <list default="true" id="ddf14783-8fd7-46bf-836a-6f8df8bc6709" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/.idea.DaisyParser/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/.idea.DaisyParser/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs" afterPath="$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs" afterPath="$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -52,19 +53,19 @@
       <file leaf-file-name="SmilParserTests.fs" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+            <state relative-caret-position="350">
+              <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
               <folding>
-                <marker date="1514537991397" expanded="true" signature="103:3511" ph=" =  ..." />
-                <marker date="1514537991397" expanded="false" signature="114:274" ph="..." />
-                <marker date="1514537991397" expanded="true" signature="314:3511" ph=" =  ..." />
-                <marker date="1514537991397" expanded="true" signature="334:2782" ph=" = &quot;&quot;&quot; ..." />
-                <marker date="1514537991397" expanded="true" signature="2799:2996" ph=" =  ..." />
-                <marker date="1514537991397" expanded="true" signature="3022:3051" ph=" = ..." />
-                <marker date="1514537991397" expanded="true" signature="3117:3161" ph=" = ..." />
-                <marker date="1514537991397" expanded="true" signature="3250:3306" ph=" = ..." />
-                <marker date="1514537991397" expanded="true" signature="3334:3504" ph="  ..." />
-                <marker date="1514537991397" expanded="true" signature="3371:3461" ph=" -&gt; ..." />
+                <marker date="1514593569183" expanded="true" signature="103:3505" ph=" =  ..." />
+                <marker date="1514593569183" expanded="false" signature="114:274" ph="..." />
+                <marker date="1514593569183" expanded="true" signature="314:3505" ph=" =  ..." />
+                <marker date="1514593569183" expanded="true" signature="334:2782" ph=" = &quot;&quot;&quot; ..." />
+                <marker date="1514593569183" expanded="true" signature="2799:2996" ph=" =  ..." />
+                <marker date="1514593569183" expanded="true" signature="3022:3045" ph=" = ..." />
+                <marker date="1514593569183" expanded="true" signature="3111:3155" ph=" = ..." />
+                <marker date="1514593569183" expanded="true" signature="3244:3300" ph=" = ..." />
+                <marker date="1514593569183" expanded="true" signature="3328:3498" ph="  ..." />
+                <marker date="1514593569183" expanded="true" signature="3365:3455" ph=" -&gt; ..." />
               </folding>
             </state>
           </provider>
@@ -73,33 +74,95 @@
       <file leaf-file-name="SmilParser.fs" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="57">
-              <caret line="53" column="59" lean-forward="true" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+            <state relative-caret-position="273">
+              <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
               <folding>
-                <marker date="1514539040790" expanded="true" signature="38:228" ph="// this module attempts to implement section 2.3 and 2.4 of the daisy202 spec ..." />
-                <marker date="1514539040790" expanded="true" signature="246:2427" ph=" = ..." />
-                <marker date="1514539040790" expanded="false" signature="256:357" ph="..." />
-                <marker date="1514539040790" expanded="true" signature="399:483" ph=" =  ..." />
-                <marker date="1514539040790" expanded="true" signature="512:2115" ph=" : (SmilPar Option) =  ..." />
-                <marker date="1514539040790" expanded="true" signature="589:755" ph=" = ..." />
-                <marker date="1514539040790" expanded="true" signature="621:755" ph="  then Audio  ..." />
-                <marker date="1514539040790" expanded="true" signature="664:755" ph="  then SequenceRef  ..." />
-                <marker date="1514539040790" expanded="true" signature="714:755" ph=" then TextRef ..." />
-                <marker date="1514539040790" expanded="true" signature="796:1027" ph=" : SmilTextReference =  ..." />
-                <marker date="1514539040790" expanded="true" signature="895:1026" ph=" Id           = textNode.AttributeValue(&quot;value&quot;) ..." />
-                <marker date="1514539040790" expanded="true" signature="1085:1284" ph=" : SmilAudioReference = ..." />
-                <marker date="1514539040790" expanded="true" signature="1116:1283" ph=" Id          = audioNode.AttributeValue(&quot;id&quot;) ..." />
-                <marker date="1514539040790" expanded="true" signature="1396:1634" ph=" = ..." />
-                <marker date="1514539040790" expanded="true" signature="1518:1594" ph=" -&gt;  ..." />
-                <marker date="1514539040790" expanded="true" signature="1684:1806" ph=" =  ..." />
-                <marker date="1514539040790" expanded="true" signature="1713:1806" ph="  ..." />
-                <marker date="1514539040790" expanded="true" signature="1725:1790" ph=" Seq.last nodes  ..." />
-                <marker date="1514539040790" expanded="true" signature="1818:2106" ph=" ..." />
-                <marker date="1514539040790" expanded="true" signature="2016:2101" ph="  ..." />
-                <marker date="1514539040790" expanded="true" signature="2167:2427" ph=" =  ..." />
-                <marker date="1514539040790" expanded="true" signature="2244:2426" ph=" -&gt; ..." />
-                <marker date="1514539040790" expanded="true" signature="2258:2426" ph=" { SmilBody.Duration = dur ..." />
+                <marker date="1514593552716" expanded="true" signature="38:228" ph="// this module attempts to implement section 2.3 and 2.4 of the daisy202 spec ..." />
+                <marker date="1514593552716" expanded="true" signature="246:2427" ph=" = ..." />
+                <marker date="1514593552716" expanded="true" signature="256:357" ph="..." />
+                <marker date="1514593552716" expanded="true" signature="399:483" ph=" =  ..." />
+                <marker date="1514593552716" expanded="true" signature="512:2115" ph=" : (SmilPar Option) =  ..." />
+                <marker date="1514593552716" expanded="true" signature="589:755" ph=" = ..." />
+                <marker date="1514593552716" expanded="true" signature="621:755" ph="  then Audio  ..." />
+                <marker date="1514593552716" expanded="true" signature="664:755" ph="  then SequenceRef  ..." />
+                <marker date="1514593552716" expanded="true" signature="714:755" ph=" then TextRef ..." />
+                <marker date="1514593552716" expanded="true" signature="796:1027" ph=" : SmilTextReference =  ..." />
+                <marker date="1514593552716" expanded="true" signature="895:1026" ph=" Id           = textNode.AttributeValue(&quot;value&quot;) ..." />
+                <marker date="1514593552716" expanded="true" signature="1085:1284" ph=" : SmilAudioReference = ..." />
+                <marker date="1514593552716" expanded="true" signature="1116:1283" ph=" Id          = audioNode.AttributeValue(&quot;id&quot;) ..." />
+                <marker date="1514593552716" expanded="true" signature="1396:1634" ph=" = ..." />
+                <marker date="1514593552716" expanded="true" signature="1518:1594" ph=" -&gt;  ..." />
+                <marker date="1514593552716" expanded="true" signature="1684:1806" ph=" =  ..." />
+                <marker date="1514593552716" expanded="true" signature="1713:1806" ph="  ..." />
+                <marker date="1514593552716" expanded="true" signature="1725:1790" ph=" Seq.last nodes  ..." />
+                <marker date="1514593552716" expanded="true" signature="1818:2106" ph=" ..." />
+                <marker date="1514593552716" expanded="true" signature="2016:2101" ph="  ..." />
+                <marker date="1514593552716" expanded="true" signature="2167:2427" ph=" =  ..." />
+                <marker date="1514593552716" expanded="true" signature="2244:2426" ph=" -&gt; ..." />
+                <marker date="1514593552716" expanded="true" signature="2260:2425" ph=" SmilBody.Duration = dur ..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Domain.fs" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/Domain.fs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="175">
+              <caret line="138" column="20" lean-forward="false" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+              <folding>
+                <marker date="1514536150732" expanded="true" signature="50:195" ph="// model based on 2.02 standard  ..." />
+                <marker date="1514536150732" expanded="true" signature="209:6001" ph=" = ..." />
+                <marker date="1514536150732" expanded="false" signature="219:263" ph="..." />
+                <marker date="1514536150732" expanded="true" signature="287:554" ph="=  ..." />
+                <marker date="1514536150732" expanded="true" signature="292:554" ph="| ``Full Audio With Title Only`` // no navigation  ..." />
+                <marker date="1514536150732" expanded="true" signature="592:633" ph=" = { ..." />
+                <marker date="1514536150732" expanded="true" signature="659:2652" ph="= ..." />
+                <marker date="1514536150732" expanded="true" signature="663:2652" ph="| Contributor // dc:contributor ..." />
+                <marker date="1514536150732" expanded="true" signature="2186:2465" ph="//content: k of n ; for the kth medium of a DTB spanned on n distribution media ..." />
+                <marker date="1514536150732" expanded="true" signature="2689:3571" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="2816:3119" ph="//Identifier : MetaDataWithScheme&lt;string, string option&gt; //dc:identifier ..." />
+                <marker date="1514536150732" expanded="true" signature="3604:3653" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="3675:3736" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="3760:4102" ph="=  ..." />
+                <marker date="1514536150732" expanded="true" signature="3767:4102" ph="Title  ..." />
+                <marker date="1514536150732" expanded="true" signature="4120:4201" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="4265:4345" ph="=  ..." />
+                <marker date="1514536150732" expanded="true" signature="4272:4345" ph="PageFront // page-front ..." />
+                <marker date="1514536150732" expanded="true" signature="4377:4476" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="4526:4729" ph="= ..." />
+                <marker date="1514536150732" expanded="true" signature="4532:4729" ph="H1 of Heading ..." />
+                <marker date="1514536150732" expanded="true" signature="4753:4819" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="4841:4865" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="4912:4971" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="4999:5097" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="5101:5355" ph="// The &lt;par&gt; element is a time container whose children do not form a temporal sequence;  ..." />
+                <marker date="1514536150732" expanded="true" signature="5374:5494" ph="= { ..." />
+                <marker date="1514536150732" expanded="true" signature="5498:5782" ph="// The &lt;seq&gt; element is a time container whose children form a temporal sequence.  ..." />
+                <marker date="1514536150732" expanded="true" signature="5803:5872" ph="=  ..." />
+                <marker date="1514536150732" expanded="true" signature="5810:5872" ph="Audio of SmilAudioReference seq ..." />
+                <marker date="1514536150732" expanded="true" signature="5912:6001" ph="= { ..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Int32.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/f8/fb091606/Int32.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-24">
+              <caret line="89" column="18" lean-forward="false" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SecuritySafeCriticalAttribute.cs" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/8d/92ccd93e/SecuritySafeCriticalAttribute.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -784,34 +847,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FSharpOption`1.cs" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/595715BB-904C-F4DA-A745-0383BB155759/cb/61603387/FSharpOption`1.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="672">
-              <caret line="32" column="22" lean-forward="false" selection-start-line="32" selection-start-column="22" selection-end-line="32" selection-end-column="22" />
-              <folding>
-                <marker date="1514348893923" expanded="true" signature="0:311" ph="/* Decompiled with JetBrains decompiler ... */" />
-                <marker date="1514348893923" expanded="false" signature="319:455" ph="..." />
-                <marker date="1514348893923" expanded="true" signature="488:3461" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="493:1115" ph="///The type of optional values. When used from other CLI languages the ... " />
-                <marker date="1514348893923" expanded="true" signature="1631:3459" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="1740:1789" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2007:2140" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2079:2134" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2146:2328" ph="///Create an option value that is a 'Some' value. ... " />
-                <marker date="1514348893923" expanded="true" signature="2436:2489" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2739:2826" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2777:2820" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2888:2927" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="2989:3028" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="3090:3144" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="3183:3347" ph="{...}" />
-                <marker date="1514348893923" expanded="true" signature="3377:3455" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -823,8 +858,10 @@
     <setting file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/BodyParser.fs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/58EC046F-0A96-8414-A745-03836F04EC58/24/f35ecfec/HtmlNodeModule.cs" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/f8/fb091606/Int32.cs" root0="SKIP_INSPECTION" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/595715BB-904C-F4DA-A745-0383BB155759/cb/61603387/FSharpOption`1.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/595715BB-904C-F4DA-A745-0383BB155759/af/41e38bdc/OptionModule.cs" root0="SKIP_INSPECTION" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/8d/92ccd93e/SecuritySafeCriticalAttribute.cs" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/docs/tools/templates/template.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/595715BB-904C-F4DA-A745-0383BB155759/de/5db5330e/ArrayModule.cs" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs" root0="FORCE_HIGHLIGHTING" />
@@ -839,8 +876,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/HeadParser.fs" />
         <option value="$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/Common.fs" />
-        <option value="$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs" />
         <option value="$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs" />
+        <option value="$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs" />
       </list>
     </option>
   </component>
@@ -958,7 +995,7 @@
       <option name="presentableId" value="Default" />
       <updated>1514348196423</updated>
       <workItem from="1514348198658" duration="2032000" />
-      <workItem from="1514537842899" duration="1227000" />
+      <workItem from="1514537842899" duration="3396000" />
     </task>
     <task id="LOCAL-00001" summary="fixed unit tests">
       <created>1514538790551</created>
@@ -967,11 +1004,18 @@
       <option name="project" value="LOCAL" />
       <updated>1514538790551</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="fixed unit tests">
+      <created>1514539075340</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1514539075340</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3259000" />
+    <option name="totallyTimeSpent" value="5428000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1070,21 +1114,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs</url>
-          <line>65</line>
-          <properties documentPath="$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs">
-            <startOffsets>
-              <startOffset value="3103" />
-            </startOffsets>
-            <endOffsets>
-              <endOffset value="3161" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="2" />
     </breakpoint-manager>
     <watches-manager />
@@ -1854,13 +1883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/Domain.fs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="113" column="2" lean-forward="false" selection-start-line="113" selection-start-column="2" selection-end-line="113" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/595715BB-904C-F4DA-A745-0383BB155759/ca/c33eb9b5/Operators.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2554,53 +2576,109 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/Domain.fs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="138" column="20" lean-forward="false" selection-start-line="138" selection-start-column="20" selection-end-line="138" selection-end-column="20" />
+          <folding>
+            <marker date="1514536150732" expanded="true" signature="50:195" ph="// model based on 2.02 standard  ..." />
+            <marker date="1514536150732" expanded="true" signature="209:6001" ph=" = ..." />
+            <marker date="1514536150732" expanded="false" signature="219:263" ph="..." />
+            <marker date="1514536150732" expanded="true" signature="287:554" ph="=  ..." />
+            <marker date="1514536150732" expanded="true" signature="292:554" ph="| ``Full Audio With Title Only`` // no navigation  ..." />
+            <marker date="1514536150732" expanded="true" signature="592:633" ph=" = { ..." />
+            <marker date="1514536150732" expanded="true" signature="659:2652" ph="= ..." />
+            <marker date="1514536150732" expanded="true" signature="663:2652" ph="| Contributor // dc:contributor ..." />
+            <marker date="1514536150732" expanded="true" signature="2186:2465" ph="//content: k of n ; for the kth medium of a DTB spanned on n distribution media ..." />
+            <marker date="1514536150732" expanded="true" signature="2689:3571" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="2816:3119" ph="//Identifier : MetaDataWithScheme&lt;string, string option&gt; //dc:identifier ..." />
+            <marker date="1514536150732" expanded="true" signature="3604:3653" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="3675:3736" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="3760:4102" ph="=  ..." />
+            <marker date="1514536150732" expanded="true" signature="3767:4102" ph="Title  ..." />
+            <marker date="1514536150732" expanded="true" signature="4120:4201" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="4265:4345" ph="=  ..." />
+            <marker date="1514536150732" expanded="true" signature="4272:4345" ph="PageFront // page-front ..." />
+            <marker date="1514536150732" expanded="true" signature="4377:4476" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="4526:4729" ph="= ..." />
+            <marker date="1514536150732" expanded="true" signature="4532:4729" ph="H1 of Heading ..." />
+            <marker date="1514536150732" expanded="true" signature="4753:4819" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="4841:4865" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="4912:4971" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="4999:5097" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="5101:5355" ph="// The &lt;par&gt; element is a time container whose children do not form a temporal sequence;  ..." />
+            <marker date="1514536150732" expanded="true" signature="5374:5494" ph="= { ..." />
+            <marker date="1514536150732" expanded="true" signature="5498:5782" ph="// The &lt;seq&gt; element is a time container whose children form a temporal sequence.  ..." />
+            <marker date="1514536150732" expanded="true" signature="5803:5872" ph="=  ..." />
+            <marker date="1514536150732" expanded="true" signature="5810:5872" ph="Audio of SmilAudioReference seq ..." />
+            <marker date="1514536150732" expanded="true" signature="5912:6001" ph="= { ..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/f8/fb091606/Int32.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="89" column="18" lean-forward="false" selection-start-line="89" selection-start-column="18" selection-end-line="89" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CE073096-ED89-4F7E-B8BF-05628286ED96/8d/92ccd93e/SecuritySafeCriticalAttribute.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/DaisyParser.Tests/Daisy202Parser/SmilParserTests.fs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="77" column="37" lean-forward="false" selection-start-line="77" selection-start-column="37" selection-end-line="77" selection-end-column="37" />
+        <state relative-caret-position="350">
+          <caret line="62" column="20" lean-forward="false" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
           <folding>
-            <marker date="1514537991397" expanded="true" signature="103:3511" ph=" =  ..." />
-            <marker date="1514537991397" expanded="false" signature="114:274" ph="..." />
-            <marker date="1514537991397" expanded="true" signature="314:3511" ph=" =  ..." />
-            <marker date="1514537991397" expanded="true" signature="334:2782" ph=" = &quot;&quot;&quot; ..." />
-            <marker date="1514537991397" expanded="true" signature="2799:2996" ph=" =  ..." />
-            <marker date="1514537991397" expanded="true" signature="3022:3051" ph=" = ..." />
-            <marker date="1514537991397" expanded="true" signature="3117:3161" ph=" = ..." />
-            <marker date="1514537991397" expanded="true" signature="3250:3306" ph=" = ..." />
-            <marker date="1514537991397" expanded="true" signature="3334:3504" ph="  ..." />
-            <marker date="1514537991397" expanded="true" signature="3371:3461" ph=" -&gt; ..." />
+            <marker date="1514593569183" expanded="true" signature="103:3505" ph=" =  ..." />
+            <marker date="1514593569183" expanded="false" signature="114:274" ph="..." />
+            <marker date="1514593569183" expanded="true" signature="314:3505" ph=" =  ..." />
+            <marker date="1514593569183" expanded="true" signature="334:2782" ph=" = &quot;&quot;&quot; ..." />
+            <marker date="1514593569183" expanded="true" signature="2799:2996" ph=" =  ..." />
+            <marker date="1514593569183" expanded="true" signature="3022:3045" ph=" = ..." />
+            <marker date="1514593569183" expanded="true" signature="3111:3155" ph=" = ..." />
+            <marker date="1514593569183" expanded="true" signature="3244:3300" ph=" = ..." />
+            <marker date="1514593569183" expanded="true" signature="3328:3498" ph="  ..." />
+            <marker date="1514593569183" expanded="true" signature="3365:3455" ph=" -&gt; ..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DaisyParser/Daisy202Parser/SmilParser.fs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="53" column="59" lean-forward="true" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="59" />
+        <state relative-caret-position="273">
+          <caret line="65" column="36" lean-forward="false" selection-start-line="65" selection-start-column="36" selection-end-line="65" selection-end-column="36" />
           <folding>
-            <marker date="1514539040790" expanded="true" signature="38:228" ph="// this module attempts to implement section 2.3 and 2.4 of the daisy202 spec ..." />
-            <marker date="1514539040790" expanded="true" signature="246:2427" ph=" = ..." />
-            <marker date="1514539040790" expanded="false" signature="256:357" ph="..." />
-            <marker date="1514539040790" expanded="true" signature="399:483" ph=" =  ..." />
-            <marker date="1514539040790" expanded="true" signature="512:2115" ph=" : (SmilPar Option) =  ..." />
-            <marker date="1514539040790" expanded="true" signature="589:755" ph=" = ..." />
-            <marker date="1514539040790" expanded="true" signature="621:755" ph="  then Audio  ..." />
-            <marker date="1514539040790" expanded="true" signature="664:755" ph="  then SequenceRef  ..." />
-            <marker date="1514539040790" expanded="true" signature="714:755" ph=" then TextRef ..." />
-            <marker date="1514539040790" expanded="true" signature="796:1027" ph=" : SmilTextReference =  ..." />
-            <marker date="1514539040790" expanded="true" signature="895:1026" ph=" Id           = textNode.AttributeValue(&quot;value&quot;) ..." />
-            <marker date="1514539040790" expanded="true" signature="1085:1284" ph=" : SmilAudioReference = ..." />
-            <marker date="1514539040790" expanded="true" signature="1116:1283" ph=" Id          = audioNode.AttributeValue(&quot;id&quot;) ..." />
-            <marker date="1514539040790" expanded="true" signature="1396:1634" ph=" = ..." />
-            <marker date="1514539040790" expanded="true" signature="1518:1594" ph=" -&gt;  ..." />
-            <marker date="1514539040790" expanded="true" signature="1684:1806" ph=" =  ..." />
-            <marker date="1514539040790" expanded="true" signature="1713:1806" ph="  ..." />
-            <marker date="1514539040790" expanded="true" signature="1725:1790" ph=" Seq.last nodes  ..." />
-            <marker date="1514539040790" expanded="true" signature="1818:2106" ph=" ..." />
-            <marker date="1514539040790" expanded="true" signature="2016:2101" ph="  ..." />
-            <marker date="1514539040790" expanded="true" signature="2167:2427" ph=" =  ..." />
-            <marker date="1514539040790" expanded="true" signature="2244:2426" ph=" -&gt; ..." />
-            <marker date="1514539040790" expanded="true" signature="2258:2426" ph=" { SmilBody.Duration = dur ..." />
+            <marker date="1514593552716" expanded="true" signature="38:228" ph="// this module attempts to implement section 2.3 and 2.4 of the daisy202 spec ..." />
+            <marker date="1514593552716" expanded="true" signature="246:2427" ph=" = ..." />
+            <marker date="1514593552716" expanded="true" signature="256:357" ph="..." />
+            <marker date="1514593552716" expanded="true" signature="399:483" ph=" =  ..." />
+            <marker date="1514593552716" expanded="true" signature="512:2115" ph=" : (SmilPar Option) =  ..." />
+            <marker date="1514593552716" expanded="true" signature="589:755" ph=" = ..." />
+            <marker date="1514593552716" expanded="true" signature="621:755" ph="  then Audio  ..." />
+            <marker date="1514593552716" expanded="true" signature="664:755" ph="  then SequenceRef  ..." />
+            <marker date="1514593552716" expanded="true" signature="714:755" ph=" then TextRef ..." />
+            <marker date="1514593552716" expanded="true" signature="796:1027" ph=" : SmilTextReference =  ..." />
+            <marker date="1514593552716" expanded="true" signature="895:1026" ph=" Id           = textNode.AttributeValue(&quot;value&quot;) ..." />
+            <marker date="1514593552716" expanded="true" signature="1085:1284" ph=" : SmilAudioReference = ..." />
+            <marker date="1514593552716" expanded="true" signature="1116:1283" ph=" Id          = audioNode.AttributeValue(&quot;id&quot;) ..." />
+            <marker date="1514593552716" expanded="true" signature="1396:1634" ph=" = ..." />
+            <marker date="1514593552716" expanded="true" signature="1518:1594" ph=" -&gt;  ..." />
+            <marker date="1514593552716" expanded="true" signature="1684:1806" ph=" =  ..." />
+            <marker date="1514593552716" expanded="true" signature="1713:1806" ph="  ..." />
+            <marker date="1514593552716" expanded="true" signature="1725:1790" ph=" Seq.last nodes  ..." />
+            <marker date="1514593552716" expanded="true" signature="1818:2106" ph=" ..." />
+            <marker date="1514593552716" expanded="true" signature="2016:2101" ph="  ..." />
+            <marker date="1514593552716" expanded="true" signature="2167:2427" ph=" =  ..." />
+            <marker date="1514593552716" expanded="true" signature="2244:2426" ph=" -&gt; ..." />
+            <marker date="1514593552716" expanded="true" signature="2260:2425" ph=" SmilBody.Duration = dur ..." />
           </folding>
         </state>
       </provider>

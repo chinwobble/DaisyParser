@@ -60,7 +60,7 @@ module SmilParserTests =
       |> Seq.head
       |> DaisyParser.Daisy202Parser.SmilParser.smilBodyOuterSeq
     let unwrappedSmilBody =
-      smilBody.Value.Value
+      smilBody.Value
     Assert.True(unwrappedSmilBody.Seq.IsNone)
 
     let firstAudio =

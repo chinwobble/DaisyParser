@@ -63,7 +63,7 @@ module SmilParser =
   let smilBodyOuterSeq (node:HtmlNode) = 
     parseDuration (node.AttributeValue("dur"))
     |> Option.map (fun dur ->
-      Some { SmilBody.Duration = dur
+           { SmilBody.Duration = dur
              Par = node.Elements "par" 
                     |> Seq.map toPar 
                     |> Seq.choose id 
