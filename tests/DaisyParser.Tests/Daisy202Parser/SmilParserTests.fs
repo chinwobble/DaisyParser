@@ -1,5 +1,6 @@
 ﻿namespace DaisyParser.Tests.Daisy202Parser
 open NUnit.Framework
+open DaisyParser.Daisy202Parser
 
 [<TestFixture>]
 module SmilParserTests = 
@@ -54,11 +55,8 @@ module SmilParserTests =
         </smil>
       """
     let smilBody = 
-      HtmlDocument.Parse(testBody)
-      |> HtmlDocumentExtensions.Body
-      |> HtmlNodeExtensions.Descendants
-      |> Seq.head
-      |> DaisyParser.Daisy202Parser.SmilParser.smilBodyOuterSeq
+      SmilParser.toSmilBody testBody
+    
     let unwrappedSmilBody =
       smilBody.Value
     Assert.True(unwrappedSmilBody.Seq.IsNone)
@@ -79,5 +77,8 @@ module SmilParserTests =
       let ref = audioRefs.First()
       Assert.AreEqual(72.200, ref.ClipStart.Value.TotalSeconds)
       Assert.AreEqual(74.659, ref.ClipEnd.Value.TotalSeconds)
+
+      let lastref = audioRefs.Last()
+      Assert.AreEqual(141.507, lastref.ClipStart.Value.TotalSeconds)
     | _ -> invalidArg "" "should be audio"
     ()

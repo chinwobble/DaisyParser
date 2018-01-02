@@ -17,11 +17,11 @@ module Processor =
         )
       )
 
-    let tryFindByParId () = 
+    let inline tryFindByParId () = 
       smilBody.Par
       |> Seq.tryFind(fun x -> x.Id = refId)
 
-    let tryFindByTextId () =
+    let inline tryFindByTextId () =
       smilBody.Par
       |> Seq.tryFind (fun p -> p.Text.Id = refId)
     

@@ -55,7 +55,7 @@ module SmilParser =
               else None
     } |> Some
     
-  let smilBodyOuterSeq (node:HtmlNode) = 
+  let private smilBodyOuterSeq (node:HtmlNode) = 
     parseDuration (node.AttributeValue("dur"))
     |> Option.map (fun dur ->
            { SmilBody.Duration = dur
@@ -63,3 +63,11 @@ module SmilParser =
                     |> Seq.map toPar 
                     |> Seq.choose id 
              Seq = None })
+
+  let toSmilBody (smilContents: string) = 
+    smilContents
+    |> HtmlDocument.Parse
+    |> HtmlDocumentExtensions.Body
+    |> HtmlNodeExtensions.Descendants
+    |> Seq.head
+    |> smilBodyOuterSeq
