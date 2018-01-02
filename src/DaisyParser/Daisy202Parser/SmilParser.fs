@@ -28,8 +28,8 @@ module SmilParser =
         |> toOption
       { Id          = audioNode.AttributeValue("id")
         File        = audioNode.AttributeValue("src")
-        ClipEnd     = audioNode.AttributeValue("clip-begin") |> parseBeginEnd
-        ClipStart   = audioNode.AttributeValue("clip-end")   |> parseBeginEnd } 
+        ClipEnd     = audioNode.AttributeValue("clip-end") |> parseBeginEnd
+        ClipStart   = audioNode.AttributeValue("clip-begin")   |> parseBeginEnd } 
     
     // todo handle seq with par (used for notes)
     let toNestedSeq (seqNodes: HtmlNode List) =
