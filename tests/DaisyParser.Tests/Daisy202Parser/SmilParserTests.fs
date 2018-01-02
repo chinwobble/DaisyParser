@@ -74,6 +74,10 @@ module SmilParserTests =
     match secondAudio with 
     | SmilNestedSeq.Audio audioRefs ->
       audioRefs
-      |> Seq.iter (fun x -> Assert.AreEqual("econ25000d.mp3", x.File))
+      |> Seq.iter (fun x -> 
+        Assert.AreEqual("econ25000d.mp3", x.File)
+        Assert.AreEqual(72.200, x.ClipStart.Value.TotalSeconds)
+        Assert.AreEqual(74.659, x.ClipEnd.Value.TotalSeconds)
+        )
     | _ -> invalidArg "" "should be audio"
     ()

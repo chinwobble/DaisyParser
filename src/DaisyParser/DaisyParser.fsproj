@@ -50,6 +50,7 @@
     <Compile Include="Daisy202Parser\HeadParser.fs" />
     <Compile Include="Daisy202Parser\BodyParser.fs" />
     <Compile Include="Daisy202Parser\SmilParser.fs" />
+    <Compile Include="Daisy202Parser\Processor.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <Choose>

@@ -8,11 +8,15 @@ module Common =
   open System
   open System.Xml 
   
-  
+  let toOption (input: ParseResult<'T>) =
+    if input.Success 
+    then Some input.Value
+    else None
+    
   let parseDuration (input : string) : Duration option = 
     let parser = DurationPattern.CreateWithCurrentCulture("S.fff")
-    if parser.Parse(input.Split('s').[0]).Success then parser.Parse(input.Split('s').[0]).Value |> Some
-    else None
+    parser.Parse(input.Split('s').[0])
+    |> toOption
   
   let commentsParser<'b> : Parser<string, 'b> = 
     between (pstring "<!--") (pstring "-->") (charsTillString "-->" false System.Int32.MaxValue)

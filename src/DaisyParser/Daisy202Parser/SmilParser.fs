@@ -15,23 +15,21 @@ module SmilParser =
     |> HtmlNodeExtensions.Descendants
 
   let toPar (par: HtmlNode) : (SmilPar Option) = 
-    let (|TextRef|SequenceRef|Audio|) (node: HtmlNode) =
-      if node.HasName "audio"  then Audio 
-      elif node.HasName "seq"  then SequenceRef 
-      elif node.HasName "text" then TextRef
-      else invalidArg "" ""
-
     let toSmilText (textNode: HtmlNode) : SmilTextReference = 
       let fileReference = textNode.AttributeValue("src").Split('#')
       { Id           = textNode.AttributeValue("id")
         File         = fileReference.[0]
         Fragment     = fileReference.[1] }
       
-    let toSmilAudioReference (audioNode: HtmlNode) : SmilAudioReference =
+    let toSmilAudioReference (audioNode: HtmlNode) :SmilAudioReference =
+      let parseBeginEnd (clipString:string) =
+        let parser = DurationPattern.CreateWithInvariantCulture("SS.FFFFFFFFF")
+        parser.Parse(clipString.Replace("npt=", "").Replace("s", ""))
+        |> toOption
       { Id          = audioNode.AttributeValue("id")
         File        = audioNode.AttributeValue("src")
-        ClipEnd     = None // todo fix 
-        ClipStart   = None } // todo fix
+        ClipEnd     = audioNode.AttributeValue("clip-begin") |> parseBeginEnd
+        ClipStart   = audioNode.AttributeValue("clip-end")   |> parseBeginEnd } 
     
     // todo handle seq with par (used for notes)
     let toNestedSeq (seqNodes: HtmlNode List) =
@@ -48,7 +46,6 @@ module SmilParser =
         |> toSmilAudioReference 
         |> Some
       else None 
-    
     {
       Id = par.AttributeValue("id")
       Text = par.Elements("text") |> Seq.last |> toSmilText
@@ -58,8 +55,6 @@ module SmilParser =
               else None
     } |> Some
     
-      
-
   let smilBodyOuterSeq (node:HtmlNode) = 
     parseDuration (node.AttributeValue("dur"))
     |> Option.map (fun dur ->
