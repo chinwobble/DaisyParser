@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net47</TargetFramework>
+    <RootNamespace>DaisyParser.Tests</RootNamespace>
+    <AssemblyName>DaisyParser.Tests</AssemblyName>
+    <Name>DaisyParser.Tests</Name>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Generators.fs" />
+    <Compile Include="Tests.fs" />
+    <Compile Include="Daisy202Parser\HeadParserTests.fs" />
+    <Compile Include="Daisy202Parser\BodyParserTests.fs" />
+    <Compile Include="Daisy202Parser\SmilParserTests.fs" />
+    <Compile Include="RunTests.fs" />
+    <None Include="paket.references" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\DaisyParser\DaisyParser.fsproj"></ProjectReference>
+  </ItemGroup>
+  <Import Project="..\..\.paket\Paket.Restore.targets" />
+</Project>

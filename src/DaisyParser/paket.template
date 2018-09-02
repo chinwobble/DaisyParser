@@ -1,0 +1,29 @@
+type file
+id DaisyParser
+title
+    DaisyParser
+owners
+    Author not set
+authors 
+    Author not set
+projectUrl
+    https://github.com/[github-user]/DaisyParser
+iconUrl
+    https://raw.githubusercontent.com/[github-user]/DaisyParser/master/docs/files/img/logo.png
+licenseUrl
+    https://github.com/[github-user]/DaisyParser/blob/master/LICENSE.txt
+requireLicenseAcceptance
+    false
+language
+    F#
+copyright
+    Copyright 2017
+tags
+    fsharp
+summary
+    Summary not set
+description
+    Description not set
+
+files
+	../../bin/DaisyParser ==> lib
